@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Token Launch Radar</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="app-header">
+<div class="header-main">
+<h1>Token Launch Radar</h1>
+<p class="subtitle">Peer-implied circulating market cap &bull; <span id="snapshot-date">2026-11-14</span></p>
+</div>
+<div class="metric-chips">
+<div class="chip"><span class="chip-label">Candidates</span><span class="chip-value" id="stat-candidates">0</span></div>
+<div class="chip"><span class="chip-label">Watchlist</span><span class="chip-value" id="stat-watchlist">40/40</span></div>
+<div class="chip"><span class="chip-label">Below Floor</span><span class="chip-value" id="stat-below-floor">0</span></div>
+<div class="chip"><span class="chip-label">Categories</span><span class="chip-value" id="stat-categories">0</span></div>
+</div>
+</header>
+<main class="app-main">
+<section class="controls-bar">
+<div class="search-box"><input type="text" id="search-input" placeholder="Search protocol, category..." aria-label="Search"></div>
+<div class="filter-group">
+<select id="filter-category"><option value="">All Categories</option></select>
+<select id="filter-chain"><option value="">All Chains</option></select>
+<select id="filter-label">
+<option value="">All Labels</option>
+<option value="WATCHLIST">Watchlist</option>
+<option value="OVERDUE">Overdue (&ge;730d)</option>
+<option value="GROWING">Growing (+10%)</option>
+<option value="EARLY">Early (&lt;180d)</option>
+<option value="THIN PEERS">Thin Peers (&lt;5)</option>
+<option value="BENCHMARK">Benchmark</option>
+</select>
+<select id="filter-tvl">
+<option value="0">Min TVL: Any</option>
+<option value="1000000">&ge;$1M</option>
+<option value="10000000">&ge;$10M</option>
+<option value="50000000">&ge;$50M</option>
+<option value="100000000">&ge;$100M</option>
+</select>
+</div>
+<div class="toggle-group">
+<label class="toggle-label"><input type="checkbox" id="toggle-watchlist"> Watchlist</label>
+<label class="toggle-label"><input type="checkbox" id="toggle-benchmarks" checked> Benchmarks</label>
+</div>
+</section>
+<div class="table-container">
+<table id="radar-table">
+<thead>
+<tr>
+<th data-sort="rank">Rank ↕</th>
+<th data-sort="name">Protocol & Chains ↕</th>
+<th data-sort="implied_value_usd" class="num">Implied Mcap ↕</th>
+<th data-sort="tvl_usd" class="num">TVL ↕</th>
+<th data-sort="change_7d" class="num">7d ↕</th>
+<th data-sort="implied_tvl_ratio" class="num">Implied/TVL ↕</th>
+<th data-sort="age_days" class="num">Age ↕</th>
+<th data-sort="peers_count" class="num">Peers ↕</th>
+</tr>
+</thead>
+<tbody id="table-body"></tbody>
+</table>
+</div>
+</main>
+<div id="drawer-backdrop" class="drawer-backdrop"></div>
+<aside id="detail-drawer" class="detail-drawer">
+<div class="drawer-header">
+<div class="drawer-title-area">
+<h2 id="drawer-name">Protocol</h2>
+<div id="drawer-badges" class="badge-row"></div>
+</div>
+<button id="drawer-close" class="close-btn">&times;</button>
+</div>
+<div class="drawer-body" id="drawer-content"></div>
+</aside>
+<footer class="app-footer">
+<p>Token Launch Radar &bull; Peer-implied valuation model &bull; Built with an uncensored-model workflow — superbot.gg</p>
+</footer>
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
